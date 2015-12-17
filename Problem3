@@ -1,0 +1,5 @@
+Stud_data = LOAD '/Student_Detail.txt' using PigStorage(',') as (Name:chararray,Col:chararray,DOB:chararray,Stream:chararray,Grade:float,State:chararray,City:chararray);
+Alabama_Gov_Col = FILTER Stud_data BY (State=='alabama') AND (Col=='goverenment');
+GroupAll_data = GROUP Alabama_Gov_Col ALL;
+Result = FOREACH GroupAll_data GENERATE COUNT(Alabama_Gov_Col);
+DUMP Result;
