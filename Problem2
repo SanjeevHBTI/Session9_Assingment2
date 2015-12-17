@@ -1,0 +1,3 @@
+Stud_data = LOAD '/Student_Detail.txt' using PigStorage(',') as (Name:chararray,Col:chararray,DOB:chararray,Stream:chararray,Grade:float,State:chararray,City:chararray);
+alaska_stud = FILTER Stud_data BY (State=='alaska');
+DUMP alaska_stud;
