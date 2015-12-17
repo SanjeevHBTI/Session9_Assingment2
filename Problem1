@@ -1,0 +1,5 @@
+Stud_data = LOAD '/Student_Detail.txt' using PigStorage(',') as (Name:chararray,Col:chararray,DOB:chararray,Stream:chararray,Grade:float,State:chararray,City:chararray);
+Less_than_data = FILTER Stud_data BY (Grade<(double)5.0);
+GroupAll_data = GROUP Less_than_data ALL;
+Result = FOREACH GroupAll_data GENERATE COUNT(Less_than_data);
+DUMP Result;
